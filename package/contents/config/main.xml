@@ -15,6 +15,11 @@
         <entry name="pollInterval" type="Int">
             <default>10</default>
         </entry>
+        <!-- When true, the widget's size hints hug the button row exactly;
+             when false the widget is freely resizable and buttons wrap -->
+        <entry name="fitToContent" type="Bool">
+            <default>true</default>
+        </entry>
         <!-- Colon-separated dirs prepended to PATH before running commands.
              plasmashell does not inherit the interactive shell's PATH, so
              CLIs like lms would otherwise not be found. -->

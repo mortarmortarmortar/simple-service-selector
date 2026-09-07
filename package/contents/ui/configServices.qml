@@ -10,6 +10,7 @@ ColumnLayout {
     property string cfg_services
     property alias cfg_pollInterval: pollSpin.value
     property alias cfg_extraPath: extraPathField.text
+    property alias cfg_fitToContent: fitCheck.checked
 
     spacing: Kirigami.Units.largeSpacing
 
@@ -90,6 +91,12 @@ ColumnLayout {
             Kirigami.FormData.label: i18n("Extra PATH directories:")
             Layout.fillWidth: true
             placeholderText: i18n("colon-separated, e.g. $HOME/.lmstudio/bin")
+        }
+
+        QQC2.CheckBox {
+            id: fitCheck
+            Kirigami.FormData.label: i18n("Widget size:")
+            text: i18n("Fit to buttons (no empty space)")
         }
     }
 

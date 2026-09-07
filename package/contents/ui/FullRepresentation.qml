@@ -8,10 +8,25 @@ import org.kde.kirigami as Kirigami
 Item {
     id: fullRep
 
-    Layout.minimumWidth: Kirigami.Units.gridUnit * 12
-    Layout.minimumHeight: Kirigami.Units.gridUnit * 7
-    Layout.preferredWidth: Kirigami.Units.gridUnit * 18
-    Layout.preferredHeight: Kirigami.Units.gridUnit * 10
+    readonly property bool fitContent: Plasmoid.configuration.fitToContent
+    readonly property real buttonWidth: Kirigami.Units.gridUnit * 6
+    readonly property real buttonHeight: Kirigami.Units.gridUnit * 5
+
+    // Width of all buttons in a single row; falls back to placeholder size
+    readonly property real contentWidth: root.services.length > 0
+        ? root.services.length * buttonWidth
+          + (root.services.length - 1) * Kirigami.Units.smallSpacing
+        : Kirigami.Units.gridUnit * 12
+    readonly property real contentHeight: root.services.length > 0
+        ? buttonHeight
+        : Kirigami.Units.gridUnit * 7
+
+    Layout.minimumWidth: fitContent ? contentWidth : Kirigami.Units.gridUnit * 12
+    Layout.minimumHeight: fitContent ? contentHeight : Kirigami.Units.gridUnit * 7
+    Layout.maximumWidth: fitContent ? contentWidth : Number.POSITIVE_INFINITY
+    Layout.maximumHeight: fitContent ? contentHeight : Number.POSITIVE_INFINITY
+    Layout.preferredWidth: fitContent ? contentWidth : Kirigami.Units.gridUnit * 18
+    Layout.preferredHeight: fitContent ? contentHeight : Kirigami.Units.gridUnit * 10
 
     PlasmaExtras.PlaceholderMessage {
         anchors.centerIn: parent
