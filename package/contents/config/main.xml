@@ -15,5 +15,11 @@
         <entry name="pollInterval" type="Int">
             <default>10</default>
         </entry>
+        <!-- Colon-separated dirs prepended to PATH before running commands.
+             plasmashell does not inherit the interactive shell's PATH, so
+             CLIs like lms would otherwise not be found. -->
+        <entry name="extraPath" type="String">
+            <default>$HOME/.lmstudio/bin:$HOME/.local/bin</default>
+        </entry>
     </group>
 </kcfg>

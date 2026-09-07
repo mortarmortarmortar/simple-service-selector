@@ -9,6 +9,7 @@ ColumnLayout {
 
     property string cfg_services
     property alias cfg_pollInterval: pollSpin.value
+    property alias cfg_extraPath: extraPathField.text
 
     spacing: Kirigami.Units.largeSpacing
 
@@ -67,19 +68,28 @@ ColumnLayout {
         }
     }
 
-    RowLayout {
-        spacing: Kirigami.Units.smallSpacing
+    Kirigami.FormLayout {
+        Layout.fillWidth: true
 
-        QQC2.Label {
-            text: i18n("Status poll interval:")
+        RowLayout {
+            Kirigami.FormData.label: i18n("Status poll interval:")
+            spacing: Kirigami.Units.smallSpacing
+
+            QQC2.SpinBox {
+                id: pollSpin
+                from: 0
+                to: 3600
+            }
+            QQC2.Label {
+                text: i18n("seconds (0 disables polling)")
+            }
         }
-        QQC2.SpinBox {
-            id: pollSpin
-            from: 0
-            to: 3600
-        }
-        QQC2.Label {
-            text: i18n("seconds (0 disables polling)")
+
+        QQC2.TextField {
+            id: extraPathField
+            Kirigami.FormData.label: i18n("Extra PATH directories:")
+            Layout.fillWidth: true
+            placeholderText: i18n("colon-separated, e.g. $HOME/.lmstudio/bin")
         }
     }
 

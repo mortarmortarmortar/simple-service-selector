@@ -39,10 +39,14 @@ PlasmoidItem {
         if (!cmd) {
             return
         }
+        const extraPath = Plasmoid.configuration.extraPath
+        const wrapped = extraPath
+            ? 'export PATH="' + extraPath + ':$PATH"; ' + cmd
+            : cmd
         const next = Object.assign({}, pending)
-        next[cmd] = (next[cmd] || []).concat([{ index: index, kind: kind }])
+        next[wrapped] = (next[wrapped] || []).concat([{ index: index, kind: kind }])
         pending = next
-        executor.connectSource(cmd)
+        executor.connectSource(wrapped)
     }
 
     function toggle(index) {
