@@ -9,8 +9,34 @@ Item {
     id: fullRep
 
     readonly property bool fitContent: Plasmoid.configuration.fitToContent
-    readonly property real buttonWidth: Kirigami.Units.gridUnit * 6
+    // Uniform button width, widened to fit the longest service name
+    property real buttonWidth: Kirigami.Units.gridUnit * 6
     readonly property real buttonHeight: Kirigami.Units.gridUnit * 5
+
+    TextMetrics {
+        id: labelMetrics
+        font: Kirigami.Theme.defaultFont
+    }
+
+    function updateButtonWidth() {
+        let w = Kirigami.Units.gridUnit * 6
+        const cap = Kirigami.Units.gridUnit * 14
+        for (const svc of root.services) {
+            labelMetrics.text = svc.name || ""
+            const needed = labelMetrics.advanceWidth + Kirigami.Units.gridUnit * 1.5
+            w = Math.max(w, Math.min(cap, needed))
+        }
+        buttonWidth = w
+    }
+
+    Component.onCompleted: updateButtonWidth()
+
+    Connections {
+        target: root
+        function onServicesChanged() {
+            fullRep.updateButtonWidth()
+        }
+    }
 
     // Width of all buttons in a single row; falls back to placeholder size
     readonly property real contentWidth: root.services.length > 0
