@@ -1,0 +1,11 @@
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# QML cache
+*.qmlc
+*.jsc
+
+# Packaging output
+*.plasmoid

@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "garrett.tyr@proton.me",
+                "Name": "Garrett"
+            }
+        ],
+        "Category": "System Services",
+        "Description": "Configurable toggle buttons to load/unload local AI models and services (LM Studio, Ollama, systemd units) from the desktop",
+        "Icon": "media-playback-start",
+        "Id": "com.github.garrett.localaitoggle",
+        "License": "GPL-3.0+",
+        "Name": "Local AI Toggle",
+        "Version": "0.1.0"
+    },
+    "KPackageStructure": "Plasma/Applet",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

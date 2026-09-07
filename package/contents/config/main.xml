@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name=""/>
+    <group name="General">
+        <!-- JSON array of service definitions:
+             [{ "name": "...", "icon": "...", "onCommand": "...",
+                "offCommand": "...", "statusCommand": "..." }] -->
+        <entry name="services" type="String">
+            <default>[]</default>
+        </entry>
+        <!-- Seconds between status polls; 0 disables polling -->
+        <entry name="pollInterval" type="Int">
+            <default>10</default>
+        </entry>
+    </group>
+</kcfg>
