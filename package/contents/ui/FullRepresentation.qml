@@ -1,20 +1,48 @@
 import QtQuick
 import QtQuick.Layouts
 import org.kde.plasma.components as PlasmaComponents
+import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 import org.kde.kirigami as Kirigami
 
-ColumnLayout {
+Item {
     id: fullRep
 
     Layout.minimumWidth: Kirigami.Units.gridUnit * 12
-    Layout.minimumHeight: Kirigami.Units.gridUnit * 8
+    Layout.minimumHeight: Kirigami.Units.gridUnit * 7
+    Layout.preferredWidth: Kirigami.Units.gridUnit * 18
+    Layout.preferredHeight: Kirigami.Units.gridUnit * 10
 
-    // TODO: replace placeholder with the grid of configurable service
-    // toggle buttons driven by plasmoid.configuration.services
-    PlasmaComponents.Label {
-        Layout.alignment: Qt.AlignCenter
-        text: i18n("Local AI Toggle — no services configured yet")
-        opacity: 0.6
+    PlasmaExtras.PlaceholderMessage {
+        anchors.centerIn: parent
+        width: parent.width - Kirigami.Units.gridUnit * 2
+        visible: root.services.length === 0
+        iconName: "preferences-system-services"
+        text: i18n("No services configured")
+        explanation: i18n("Add toggle buttons for your AI models and services")
+        helpfulAction: Kirigami.Action {
+            icon.name: "configure"
+            text: i18n("Configure…")
+            onTriggered: Plasmoid.internalAction("configure").trigger()
+        }
+    }
+
+    PlasmaComponents.ScrollView {
+        id: scroll
+        anchors.fill: parent
+        visible: root.services.length > 0
+        contentWidth: availableWidth
+
+        GridLayout {
+            width: scroll.availableWidth
+            columns: Math.max(1, Math.floor(scroll.availableWidth / (Kirigami.Units.gridUnit * 7)))
+            columnSpacing: Kirigami.Units.smallSpacing
+            rowSpacing: Kirigami.Units.smallSpacing
+
+            Repeater {
+                model: root.services
+                delegate: ServiceButton {}
+            }
+        }
     }
 }

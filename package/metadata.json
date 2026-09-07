@@ -3,13 +3,13 @@
         "Authors": [
             {
                 "Email": "garrett.tyr@proton.me",
-                "Name": "Garrett"
+                "Name": "mortarmortarmortar"
             }
         ],
         "Category": "System Services",
         "Description": "Configurable toggle buttons to load/unload local AI models and services (LM Studio, Ollama, systemd units) from the desktop",
         "Icon": "media-playback-start",
-        "Id": "com.github.garrett.localaitoggle",
+        "Id": "com.github.mortarmortarmortar.localaitoggle",
         "License": "GPL-3.0+",
         "Name": "Local AI Toggle",
         "Version": "0.1.0"
