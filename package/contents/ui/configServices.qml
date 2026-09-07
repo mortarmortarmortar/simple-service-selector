@@ -35,7 +35,7 @@ ColumnLayout {
                 }
             }
         } catch (e) {
-            console.warn("LocalAIToggle: could not parse services config:", e)
+            console.warn("SimpleServiceSelector: could not parse services config:", e)
         }
         loaded = true
     }

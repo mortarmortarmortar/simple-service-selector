@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-ID="com.github.mortarmortarmortar.localaitoggle"
+ID="com.github.mortarmortarmortar.simpleserviceselector"
 
 if kpackagetool6 -t Plasma/Applet --list | grep -q "$ID"; then
     kpackagetool6 -t Plasma/Applet -u package

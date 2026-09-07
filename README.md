@@ -1,4 +1,4 @@
-# Local AI Toggle
+# Simple Service Selector
 
 A KDE Plasma 6 widget with configurable toggle buttons for starting and
 stopping local services — built primarily for loading and unloading AI
@@ -45,12 +45,12 @@ ollama` / `systemctl --user is-active --quiet ollama`.
 ./install.sh
 ```
 
-Then add "Local AI Toggle" to your desktop or panel via *Add Widgets…*
+Then add "Simple Service Selector" to your desktop or panel via *Add Widgets…*
 
 Uninstall:
 
 ```sh
-kpackagetool6 -t Plasma/Applet -r com.github.mortarmortarmortar.localaitoggle
+kpackagetool6 -t Plasma/Applet -r com.github.mortarmortarmortar.simpleserviceselector
 ```
 
 ## Layout

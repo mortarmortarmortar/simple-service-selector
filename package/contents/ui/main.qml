@@ -12,7 +12,7 @@ PlasmoidItem {
             const parsed = JSON.parse(Plasmoid.configuration.services)
             return Array.isArray(parsed) ? parsed : []
         } catch (e) {
-            console.warn("LocalAIToggle: could not parse services config:", e)
+            console.warn("SimpleServiceSelector: could not parse services config:", e)
             return []
         }
     }
@@ -108,7 +108,7 @@ PlasmoidItem {
                     statusUpdates[key] = exitCode === 0 ? "running" : "stopped"
                 } else {
                     if (exitCode !== 0) {
-                        console.warn("LocalAIToggle: command failed (" + exitCode + "):",
+                        console.warn("SimpleServiceSelector: command failed (" + exitCode + "):",
                                      source, data["stderr"])
                     }
                     busyUpdates[key] = false
