@@ -33,11 +33,11 @@ Item {
         visible: root.services.length > 0
         contentWidth: availableWidth
 
-        GridLayout {
+        // Left-to-right flow: buttons line up horizontally and only wrap
+        // to a new row when they run out of width
+        Flow {
             width: scroll.availableWidth
-            columns: Math.max(1, Math.floor(scroll.availableWidth / (Kirigami.Units.gridUnit * 7)))
-            columnSpacing: Kirigami.Units.smallSpacing
-            rowSpacing: Kirigami.Units.smallSpacing
+            spacing: Kirigami.Units.smallSpacing
 
             Repeater {
                 model: root.services

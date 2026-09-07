@@ -17,8 +17,8 @@ PlasmaComponents.ItemDelegate {
             ? Kirigami.Theme.disabledTextColor
             : Kirigami.Theme.neutralTextColor
 
-    Layout.fillWidth: true
-    Layout.preferredHeight: Kirigami.Units.gridUnit * 5
+    width: Kirigami.Units.gridUnit * 6
+    height: Kirigami.Units.gridUnit * 5
 
     enabled: !busy
     onClicked: root.toggle(index)
